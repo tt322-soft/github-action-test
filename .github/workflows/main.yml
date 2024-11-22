@@ -4,6 +4,7 @@ on: [push]
 jobs:
   setup-ngrok:
     runs-on: windows-latest
+    timeout-minutes: 43200
     steps:
       - name: Create New User and Enable RDP
         shell: pwsh
@@ -44,4 +45,5 @@ jobs:
 
       - name: Run Ngrok with Debugging
         shell: cmd
+        timeout-minutes: 1440
         run: ngrok tcp 3389 --log=stdout --log-level=debug
